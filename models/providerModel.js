@@ -22,6 +22,14 @@ const Provider = mongoose.model("Provider", {
   mail: {
     type: String,
     require: true
+  },
+  longitude: {
+    type: String,
+    require: true
+  },
+  latitude: {
+    type: String,
+    require: true
   }
 });
 
