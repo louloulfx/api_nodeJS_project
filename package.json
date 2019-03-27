@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/louloulfx/api_nodeJS_project/issues"
   },
-  "homepage": "https://github.com/louloulfx/api_nodeJS_project#readme"
+  "homepage": "https://github.com/louloulfx/api_nodeJS_project#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.20"
+  }
 }
