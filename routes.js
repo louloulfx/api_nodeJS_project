@@ -11,6 +11,7 @@ const { userPost, userGet, userDelete, userGetbyId, userPut } = require('./route
 const app = express();
 app.use(bodyParser.json());
 
+app.get('/', res.redirect('/user'));
 //Création des requêtes pour tout les modules avec express
 app.post('/provider', providerPost);
 app.get('/provider', providerGet);
