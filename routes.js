@@ -1,6 +1,6 @@
 //Appel du module express
 const express = require("express");
-
+const Cors = require("cors");
 //Appel du module bodyParser
 const bodyParser = require("body-parser");
 
@@ -21,6 +21,7 @@ const {
 } = require("./routes/userRoutes");
 
 const app = express();
+app.use(Cors());
 app.use(bodyParser.json());
 
 app.get('/', (req,res) => {
