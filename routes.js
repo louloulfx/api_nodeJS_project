@@ -23,8 +23,11 @@ const {
 const app = express();
 app.use(bodyParser.json());
 
-app.get("/", function(req, res) {
-  res.redirect("/user");
+app.get('/', (req,res) => {
+    res.send({
+        status : "online",
+        version: "1.0.0"
+    })
 });
 //Création des requêtes pour tout les modules avec express
 app.post("/provider", providerPost);
