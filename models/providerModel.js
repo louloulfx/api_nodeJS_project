@@ -24,10 +24,12 @@ const Provider = mongoose.model("Provider", {
     require: true
   },
   longitude: {
-    type: String
+    type: String,
+    require: true
   },
   latitude: {
-    type: String
+    type: String,
+    require: true
   }
 });
 

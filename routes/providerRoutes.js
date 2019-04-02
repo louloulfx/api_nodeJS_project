@@ -15,7 +15,9 @@ const providerPost = (req, res) => {
             description: req.body.description,
             address: req.body.address,
             phone: req.body.phone,
-            mail: req.body.mail
+            mail: req.body.mail,
+            longitude: req.body.longitude,
+            latitude: req.body.latitude
         });
     newProvider.save().then(provider => res.json(provider)).catch(err => res.status(500).send(err));
 }
