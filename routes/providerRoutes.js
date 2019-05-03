@@ -9,17 +9,31 @@ const { Provider } = require('../models/providerModel');
 
 // Méthode post pour le modèle provider
 const providerPost = (req, res) => {
-    const newProvider =
-        new Provider({
-            name: req.body.name,
-            description: req.body.description,
-            address: req.body.address,
-            phone: req.body.phone,
-            mail: req.body.mail,
-            longitude: req.body.longitude,
-            latitude: req.body.latitude
-        });
-    newProvider.save().then(provider => res.json(provider)).catch(err => res.status(500).send(err));
+    if (req.body.name) {
+        const newProvider =
+            new Provider({
+                name: req.body.name,
+                description: req.body.description,
+                address: req.body.address,
+                phone: req.body.phone,
+                mail: req.body.mail,
+                longitude: req.body.longitude,
+                latitude: req.body.latitude
+            });
+        newProvider.save().then(provider => res.json(provider)).catch(err => res.status(500).send(err));
+    }
+    else if (req.params.name) {
+        const newProvider =
+            new Provider({
+                name: req.params.name,
+                description: req.params.description,
+                address: req.params.address,
+                phone: req.params.phone,
+                mail: req.params.mail
+            });
+        newProvider.save().then(provider => res.json(provider)).catch(err => res.status(500).send(err));
+    }
+
 }
 
 // Méthode get pour le modèle provider
