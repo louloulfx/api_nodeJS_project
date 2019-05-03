@@ -29,9 +29,7 @@ const providerPost = (req, res) => {
                 description: req.params.description,
                 address: req.params.address,
                 phone: req.params.phone,
-                mail: req.params.mail,
-                longitude: req.params.longitude,
-                latitude: req.params.latitude
+                mail: req.params.mail
             });
         newProvider.save().then(provider => res.json(provider)).catch(err => res.status(500).send(err));
     }
