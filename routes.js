@@ -36,7 +36,7 @@ app.put("/provider/:id", providerPut);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// use JWT auth to secure the api
+// the api utilisation de l'authentification jwt pour sécuriser l'api
 app.use(jwt());
 
 // api routes
