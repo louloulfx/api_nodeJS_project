@@ -9,7 +9,8 @@ const { Provider } = require('../models/providerModel');
 
 // Méthode post pour le modèle provider
 const providerPost = (req, res) => {
-    const newProvider =
+    if (req.body.name) {
+        const newProvider =
         new Provider({
             name: req.body.name,
             description: req.body.description,
@@ -19,6 +20,8 @@ const providerPost = (req, res) => {
             longitude: req.body.longitude,
             latitude: req.body.latitude
         });
+    }
+    
     newProvider.save().then(provider => res.json(provider)).catch(err => res.status(500).send(err));
 }
 
