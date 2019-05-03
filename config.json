@@ -1,0 +1,4 @@
+{
+  "connectionString": "mongodb+srv://louloulfx:louloulou@cluster0-y6q3e.gcp.mongodb.net/Api_ViaBrico?retryWrites=true",
+  "secret": "bricolage"
+}

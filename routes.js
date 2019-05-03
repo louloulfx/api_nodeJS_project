@@ -1,3 +1,6 @@
+require('rootpath')();
+const jwt = require('_helpers/jwt');
+const errorHandler = require('_helpers/error_handler');
 //Appel du module express
 const express = require("express");
 const Cors = require("cors");
@@ -12,13 +15,6 @@ const {
   providerGetbyId,
   providerPut
 } = require("./routes/providerRoutes");
-const {
-  userPost,
-  userGet,
-  userDelete,
-  userGetbyId,
-  userPut
-} = require("./routes/userRoutes");
 
 const app = express();
 app.use(Cors());
@@ -37,11 +33,17 @@ app.delete("/provider/:id", providerDelete);
 app.get("/provider/:id", providerGetbyId);
 app.put("/provider/:id", providerPut);
 
-app.post("/user", userPost);
-app.get("/user", userGet);
-app.delete("/user/:id", userDelete);
-app.get("/user/:id", userGetbyId);
-app.put("/user/:id", userPut);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// use JWT auth to secure the api
+app.use(jwt());
+
+// api routes
+app.use('/users', require('./users/users.controller'));
+
+// global error handler
+app.use(errorHandler);
 
 //Export de express et de toutes les routes
 module.exports = { app };
