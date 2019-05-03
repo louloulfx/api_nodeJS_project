@@ -34,37 +34,37 @@ async function getById(id) {
 }
 
 async function create(userParam) {
-    // validate
+    // validation
     if (await User.findOne({ username: userParam.username })) {
         throw 'Username "' + userParam.username + '" is already taken';
     }
 
     const user = new User(userParam);
 
-    // hash password
+    // hash mot de passe
     if (userParam.password) {
         user.hash = bcrypt.hashSync(userParam.password, 10);
     }
 
-    // save user
+    // enregistrement d'un user
     await user.save();
 }
 
 async function update(id, userParam) {
     const user = await User.findById(id);
 
-    // validate
+    // validation
     if (!user) throw 'User not found';
     if (user.username !== userParam.username && await User.findOne({ username: userParam.username })) {
         throw 'Username "' + userParam.username + '" is already taken';
     }
 
-    // hash password if it was entered
+    // hash mot de passe si il a été entré
     if (userParam.password) {
         userParam.hash = bcrypt.hashSync(userParam.password, 10);
     }
 
-    // copy userParam properties to user
+    // copier les propriétés userParam au user
     Object.assign(user, userParam);
 
     await user.save();
