@@ -21,6 +21,18 @@ const providerPost = (req, res) => {
             latitude: req.body.latitude
         });
     }
+    else if (req.params.name) {
+        const newProvider =
+        new Provider({
+            name: req.params.name,
+            description: req.params.description,
+            address: req.params.address,
+            phone: req.params.phone,
+            mail: req.params.mail,
+            longitude: req.params.longitude,
+            latitude: req.params.latitude
+        });
+    }
     
     newProvider.save().then(provider => res.json(provider)).catch(err => res.status(500).send(err));
 }
